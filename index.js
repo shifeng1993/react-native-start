@@ -1,6 +1,6 @@
 /* ******* 主入口 *******/
 // 引入启动组件对象
-import { AppRegistry } from 'react-native';
+import { AppRegistry,YellowBox} from 'react-native';
 // 引入源文件主入口
 import {Root} from './src/App'
 
@@ -14,5 +14,7 @@ if (!__DEV__) {
   };
 }
 
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader','Module RNFetchBlob']);
+
 // 注册，实例化启动对象
-AppRegistry.registerComponent('rnstart', () => Root);
+AppRegistry.registerComponent('project', () => Root);

@@ -2,7 +2,11 @@ import React, {Component} from "react";
 import {Provider, connect} from "react-redux";
 import {View, BackHandler, Platform, Dimensions} from "react-native";
 import {NavigationActions, addNavigationHelpers} from "react-navigation";
-import {createReduxBoundAddListener} from 'react-navigation-redux-helpers';
+import {
+  createNavigationPropConstructor,       // handles #1 above
+  createNavigationReducer,               // handles #2 above
+  initializeListeners,                   // handles #4 above
+} from 'react-navigation-redux-helpers';
 import Orientation from 'react-native-orientation';
 import getStore from "./store";
 import {StatusBar, Navigator, Toast} from './components';
@@ -25,11 +29,8 @@ global.newWidth = utils.getWidth();  // 获取一个定量宽度，不管设备�
 let navigation;
 
 // 以下是集成redux
-const addListener = createReduxBoundAddListener("root");
-const navReducer = (state, action) => {
-  const newState = AppNavigator.router.getStateForAction(action, state);
-  return newState || state;
-};
+const navigationPropConstructor = createNavigationPropConstructor("root");
+const navReducer = createNavigationReducer(AppNavigator);
 
 class App extends Component {
   componentWillMount() {
@@ -39,6 +40,7 @@ class App extends Component {
   /*处理安卓硬件返回按键 开始*/
   componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
+    initializeListeners("root", this.props.nav);
   }
   componentWillUnmount() {
     BackHandler.removeEventListener("hardwareBackPress", this.onBackPress);
@@ -66,7 +68,7 @@ class App extends Component {
 
   render() {
     const {dispatch, nav} = this.props;
-    navigation = addNavigationHelpers({dispatch, state: nav,addListener});
+    navigation = navigationPropConstructor(dispatch, nav);
     global.navigation = navigation
     global.ThemeStyle = ThemeStyle[this.props.config.theme]   // 添加主题全局对象   需要的地方调用 例：ThemeStyle.pageColor
     // 默认底部toastshow

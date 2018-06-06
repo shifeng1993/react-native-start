@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import {StackNavigator} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation';
 import Main from './Main'
 
 // 引入原生切换动画
-import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator';
+import {forHorizontal} from 'react-navigation/src/views/StackView/StackViewStyleInterpolator';
 
 // 引入页面容器
 import {
@@ -11,7 +11,7 @@ import {
 } from '../pages';
 
 /* ****************************** 总导航 ****************************** */
-const AppNavigator = StackNavigator({
+const AppNavigator = createStackNavigator({
   Main: {
     screen: Main,
     navigationOptions: {
@@ -29,7 +29,7 @@ const AppNavigator = StackNavigator({
   }
 }, {
   initialRouteName: 'Main',
-  transitionConfig: () => ({screenInterpolator: CardStackStyleInterpolator.forHorizontal})
+  transitionConfig: () => ({screenInterpolator: forHorizontal})
 });
 
 export default AppNavigator;
