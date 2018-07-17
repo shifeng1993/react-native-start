@@ -12,7 +12,6 @@ let middleware = [thunk, NavMiddleware]
 export default getStore = (navReducer) => {
     return createStore(
         getReducers(navReducer),
-        undefined,
         applyMiddleware(...middleware)
     );
 }

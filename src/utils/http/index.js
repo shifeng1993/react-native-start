@@ -1,5 +1,5 @@
 import qs from 'querystring';
-import RNFetchBlob from 'react-native-fetch-blob';
+import RNFetchBlob from 'rn-fetch-blob';
 import httpConfig from '../../config/httpConfig.js';
 
 const baseUrl = `${httpConfig.baseUrl}${!httpConfig.port?'':':'}${httpConfig.portv}${!httpConfig.prefix?'':'/'}${httpConfig.prefix}`

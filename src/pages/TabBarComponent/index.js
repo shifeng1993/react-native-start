@@ -12,8 +12,8 @@ export default class TabBarComponent extends Component {
     this.state = {};
   }
   renderItem = (route, index) => {
-    const {navigation, jumpTo} = this.props;
-    const focused = index === navigation.state.index;
+    // const {navigation, jumpTo} = this.props;
+    // const focused = index === navigation.state.index;
     const color = focused
       ? this.props.activeTintColor
       : this.props.inactiveTintColor;
@@ -33,7 +33,7 @@ export default class TabBarComponent extends Component {
       ]}
         onPress={() => focused
         ? null
-        : jumpTo(navigation.state.routes[index].key)}>
+        : null}>
         <View style={[styles.tabItem]}>
           {this
             .props
@@ -65,10 +65,10 @@ export default class TabBarComponent extends Component {
     );
   }
   _navigatorMiddle = () => {
-    const routes = this.props.navigation.state.routes;
+    // const routes = this.props.navigation.state.routes;
     return (
       <View style={styles.tabbarContainer}>
-        {routes && routes.map((route, index) => this.renderItem(route, index))}
+        {/* {routes && routes.map((route, index) => this.renderItem(route, index))} */}
       </View>
     );
   }

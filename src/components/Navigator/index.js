@@ -26,7 +26,6 @@ import {
   Platform,
   TouchableOpacity
 } from 'react-native';
-import Orientation from 'react-native-orientation';
 import utils from '../../utils';
 
 const {width, height} = Dimensions.get('window');

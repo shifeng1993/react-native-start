@@ -11,7 +11,7 @@ import {
 } from '../pages';
 
 /* ****************************** 总导航 ****************************** */
-const AppNavigator = createStackNavigator({
+const RootNavigator = createStackNavigator({
   Main: {
     screen: Main,
     navigationOptions: {
@@ -32,4 +32,4 @@ const AppNavigator = createStackNavigator({
   transitionConfig: () => ({screenInterpolator: forHorizontal})
 });
 
-export default AppNavigator;
+export default RootNavigator;

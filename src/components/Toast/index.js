@@ -129,7 +129,9 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     text: {
-        color: 'white'
+      color: '#c9d0d7',
+      textAlign: 'center',
+      fontSize: 16
     }
 });
 
@@ -148,10 +150,14 @@ Toast.propTypes = {
 }
 
 Toast.defaultProps = {
+    style:{
+      backgroundColor: '#38506d',
+      borderRadius: 5
+    },
     position: 'bottom',
     textStyle: styles.text,
     positionValue: 120,
     fadeInDuration: 500,
     fadeOutDuration: 500,
-    opacity: 1
+    opacity: 0.95
 }
