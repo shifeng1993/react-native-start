@@ -10,6 +10,7 @@ import ThemeStyle from './common/ThemeStyle';
 import http from './utils/http';
 import storage from './utils/storage';
 import utils from './utils'
+import NavigationService from './utils/NavigationService';
 
 // 引入路由
 import RootNavigator from './router';
@@ -54,7 +55,7 @@ class App extends Component {
     console.log(this.props)
     const {navigation, config} = this.props;
     global.ThemeStyle = ThemeStyle[config.theme];
-    return <RootNavigator navigation={navigation}/>;
+    return <RootNavigator navigation={navigation} ref={ref => NavigationService.setRootNavigator(ref)} />;
   }
 }
 
